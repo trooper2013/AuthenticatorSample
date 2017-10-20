@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13526" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="5ZW-Jx-LCp">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="iFJ-Da-Xjx">
+            <objects>
+                <navigationController id="5ZW-Jx-LCp" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="3Im-Xt-q8V">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.01176470588" green="0.49019607840000001" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="SjN-qI-N0d"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UoW-K9-Ezy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-297" y="74"/>
+        </scene>
+        <!--Authenticator Sample-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Authenticator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <navigationItem key="navigationItem" title="Authenticator Sample" id="tYR-Sf-AY8">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="action" id="caF-DY-A3k">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="popOverAction:" destination="BYZ-38-t0r" id="QCY-2Y-ZlN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="showPopoverButton" destination="caF-DY-A3k" id="rhx-8G-M5v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="566" y="74"/>
+        </scene>
+        <!--Users-->
+        <scene sceneID="g0h-Fk-HwC">
+            <objects>
+                <tableViewController storyboardIdentifier="Users" title="Users" id="j4B-HW-Ycz" customClass="UserListViewController" customModule="Authenticator" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="BVd-Lf-Etx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="mycell" id="JAh-3x-1In" customClass="UserTableViewCell" customModule="Authenticator" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JAh-3x-1In" id="aLv-mt-bwc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="j4B-HW-Ycz" id="Pas-fY-6l1"/>
+                            <outlet property="delegate" destination="j4B-HW-Ycz" id="Uyu-xN-1Tz"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jg0-y0-4re" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-278" y="852"/>
+        </scene>
+        <!--Apps-->
+        <scene sceneID="yf5-nt-a0z">
+            <objects>
+                <viewController storyboardIdentifier="Apps" title="Apps" id="CSD-sE-Tux" customClass="AppsViewController" customModule="Authenticator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MSK-Sj-uuS"/>
+                        <viewControllerLayoutGuide type="bottom" id="t36-SE-ZYv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dYM-c1-Uxt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="The Following apps will be launched in the context of user." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBN-sJ-5xF">
+                                <rect key="frame" x="45" y="59" width="285" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="hoh-qv-wex"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2f-Mx-llm">
+                                <rect key="frame" x="43" y="162" width="103" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="SalesforceAppLogo.jpg"/>
+                                <connections>
+                                    <action selector="appOneButtonAction:" destination="CSD-sE-Tux" eventType="touchUpInside" id="q4u-h9-Nwe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Smk-HF-msE">
+                                <rect key="frame" x="207" y="162" width="97" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" backgroundImage="SalesforceAppLogo2.png"/>
+                                <connections>
+                                    <action selector="appTwoButtonAction:" destination="CSD-sE-Tux" eventType="touchUpInside" id="6L1-O2-LUK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="EBN-sJ-5xF" firstAttribute="leading" secondItem="dYM-c1-Uxt" secondAttribute="leadingMargin" constant="23" id="8YB-Ws-tnT"/>
+                            <constraint firstItem="EBN-sJ-5xF" firstAttribute="top" secondItem="MSK-Sj-uuS" secondAttribute="bottom" constant="83" id="GbU-Ay-MeO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EBN-sJ-5xF" secondAttribute="trailing" constant="35" id="whq-LB-HtC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appOneButton" destination="d2f-Mx-llm" id="Sjr-4h-MUj"/>
+                        <outlet property="appTwoButton" destination="Smk-HF-msE" id="bMb-4H-eMk"/>
+                        <outlet property="messageLabel" destination="EBN-sJ-5xF" id="uZE-89-Wof"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fbf-72-gjA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="562.39999999999998" y="855.9220389805098"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="k19-RR-TMF">
+            <objects>
+                <viewController storyboardIdentifier="Settings" title="Settings" id="Xs9-Ya-6c1" customClass="SettingsViewController" customModule="Authenticator" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QZz-25-IvR"/>
+                        <viewControllerLayoutGuide type="bottom" id="gQS-fb-dXU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0IS-5j-Kg0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App-1 Callback URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S68-vX-2kd">
+                                <rect key="frame" x="57" y="121" width="276" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="rWN-4B-GN6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="App-2 Callback URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyo-CW-hUB">
+                                <rect key="frame" x="57" y="297" width="276" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="jhM-0z-8dj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="com.salesforce.mobilesdk.AccountEditor://oauth2/idp" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="P3t-Tc-T2s">
+                                <rect key="frame" x="57" y="337" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="com.salesforce.mobilesdk.AccountEditor://oauth2/idp" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="PDu-PT-WHK">
+                                <rect key="frame" x="57" y="161" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="tpp-qG-fTG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Osn-xO-SGh">
+                                <rect key="frame" x="67" y="480" width="241" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="58" id="6eP-kh-6hi"/>
+                                </constraints>
+                                <state key="normal" title="Apply Changes"/>
+                                <connections>
+                                    <action selector="applyChanges:" destination="Xs9-Ya-6c1" eventType="touchUpInside" id="m9I-aX-IdU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gQS-fb-dXU" firstAttribute="top" secondItem="Osn-xO-SGh" secondAttribute="bottom" constant="129" id="0kH-I7-Qkp"/>
+                            <constraint firstItem="zyo-CW-hUB" firstAttribute="leading" secondItem="P3t-Tc-T2s" secondAttribute="leading" id="5yy-eu-AYt"/>
+                            <constraint firstItem="Osn-xO-SGh" firstAttribute="top" secondItem="P3t-Tc-T2s" secondAttribute="bottom" constant="15" id="8Az-wa-1dM"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="PDu-PT-WHK" secondAttribute="trailing" constant="62" id="8ty-la-1SO"/>
+                            <constraint firstItem="S68-vX-2kd" firstAttribute="leading" secondItem="0IS-5j-Kg0" secondAttribute="leadingMargin" constant="41" id="BK5-33-WhA"/>
+                            <constraint firstItem="PDu-PT-WHK" firstAttribute="top" secondItem="S68-vX-2kd" secondAttribute="bottom" constant="8" symbolic="YES" id="CcT-Kb-9ay"/>
+                            <constraint firstItem="PDu-PT-WHK" firstAttribute="leading" secondItem="zyo-CW-hUB" secondAttribute="leading" id="Ehz-yw-CaH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="S68-vX-2kd" secondAttribute="trailing" constant="26" id="KXP-qn-igV"/>
+                            <constraint firstItem="S68-vX-2kd" firstAttribute="trailing" secondItem="zyo-CW-hUB" secondAttribute="trailing" id="MpR-R3-YNy"/>
+                            <constraint firstItem="P3t-Tc-T2s" firstAttribute="top" secondItem="zyo-CW-hUB" secondAttribute="bottom" constant="8" symbolic="YES" id="RoT-Vt-83T"/>
+                            <constraint firstItem="S68-vX-2kd" firstAttribute="top" secondItem="QZz-25-IvR" secondAttribute="bottom" constant="101" id="Z9K-xZ-2rj"/>
+                            <constraint firstItem="Osn-xO-SGh" firstAttribute="centerX" secondItem="0IS-5j-Kg0" secondAttribute="centerX" id="hpw-jN-8dL"/>
+                            <constraint firstItem="zyo-CW-hUB" firstAttribute="top" secondItem="PDu-PT-WHK" secondAttribute="bottom" constant="8" symbolic="YES" id="kD7-Gs-4gR"/>
+                            <constraint firstItem="S68-vX-2kd" firstAttribute="leading" secondItem="PDu-PT-WHK" secondAttribute="leading" id="qiw-CG-hvy"/>
+                            <constraint firstItem="PDu-PT-WHK" firstAttribute="trailing" secondItem="P3t-Tc-T2s" secondAttribute="trailing" id="uAX-nj-VHa"/>
+                            <constraint firstItem="Osn-xO-SGh" firstAttribute="leading" secondItem="0IS-5j-Kg0" secondAttribute="leadingMargin" constant="51" id="yfb-wL-x9q"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="appOneURLTextView" destination="PDu-PT-WHK" id="5hR-37-hoo"/>
+                        <outlet property="appTwoURLTextView" destination="P3t-Tc-T2s" id="Z8D-zP-VDI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Yq-H0-tAf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1373.5999999999999" y="857.72113943028489"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="SalesforceAppLogo.jpg" width="650" height="644"/>
+        <image name="SalesforceAppLogo2.png" width="300" height="300"/>
+    </resources>
+</document>
