@@ -33,14 +33,12 @@ class MainViewController: UINavigationController {
         
         let usersViewController = storyboard.instantiateViewController(withIdentifier: "Users")
         let appsViewController = storyboard.instantiateViewController(withIdentifier: "Apps")
-        let settingsViewController = storyboard.instantiateViewController(withIdentifier: "Settings")
         
         // Initialize a FixedPagingViewController and pass
         // in the view controllers.
         let pagingViewController = FixedPagingViewController(viewControllers: [
             usersViewController,
-            appsViewController,
-            settingsViewController
+            appsViewController
             ])
         // Make sure you add the PagingViewController as a child view
         // controller and contrain it to the edges of the view.
