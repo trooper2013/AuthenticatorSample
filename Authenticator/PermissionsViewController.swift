@@ -8,10 +8,9 @@
 
 import UIKit
 import SalesforceSDKCore
+import Kingfisher
 class PermissionsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,SFSDKUserSelectionView{
-//    @IBOutlet weak var requestMessageLabel: UILabel!
-//
-//    @IBOutlet weak var navBar: UINavigationBar!
+ 
     @IBOutlet weak var tableView: UITableView!
     let cellIdentifier = "mycell"
     
@@ -19,10 +18,7 @@ class PermissionsViewController: UIViewController,UITableViewDelegate,UITableVie
     var userSelectionDelegate :SFSDKUserSelectionViewDelegate?
     
     var spAppOptions: [AnyHashable : Any]!
-//    var appName: String?
-//    var appDescription: String?
-//    var appIdentifier: String?
-//    var callingAppCurrentUser: String?
+    @IBOutlet weak var infoTextView: UITextView!
     
     @IBAction func addUserAction(_ sender: Any) {
        userSelectionDelegate?.createNewUser(self.spAppOptions)
@@ -35,8 +31,12 @@ class PermissionsViewController: UIViewController,UITableViewDelegate,UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        userList = SFUserAccountManager.sharedInstance().allUserAccounts()!
+        let loginHost = spAppOptions["login_host"]
+        if let host  = loginHost {
+            userList = SFUserAccountManager.sharedInstance().userAccounts(forDomain: host as! String) as! [SFUserAccount];
+        } else {
+            userList = SFUserAccountManager.sharedInstance().allUserAccounts()!
+        }
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         
         self.tableView.delegate = self
@@ -46,9 +46,13 @@ class PermissionsViewController: UIViewController,UITableViewDelegate,UITableVie
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0, green: 0.439, blue: 0.824, alpha: 1.0)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         
-        self.title = "Select User"
-//        let appName:String = spAppOptions["app_name"] as! String
-//        self.requestMessageLabel.text = appName.removingPercentEncoding! + " is requesting access."
+        self.title = "Login as"
+        var appName:String = ""
+        if (spAppOptions.index(forKey:"app_name") != nil) {
+            appName = spAppOptions["app_name"] as! String
+        }
+        self.infoTextView.attributedText = self.getAttributedText(appName: appName)
+        self.infoTextView.textAlignment = .center
         let bundle = Bundle(for: type(of: self))
         let nib = UINib(nibName: "UserTableViewCell", bundle: bundle)
         self.tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
@@ -76,22 +80,20 @@ class PermissionsViewController: UIViewController,UITableViewDelegate,UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let result = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! UserTableViewCell
-        
-        result.currentLabel.isHidden = true;
-        result.logoutButton.isHidden = true;
-        //result.delegate = self
+        let result = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)  as! UserTableViewCell
+        result.currentUserImage.isHidden = true;
         result.user = userList[indexPath.row]
         result.userFullName.text = userList[indexPath.row].fullName
-        result.email.text = userList[indexPath.row].email
-        result.domain.text = userList[indexPath.row].apiUrl.absoluteString
-//        let cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-//        
-//        
-//        let result = cell ?? UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
-//        
-//        result.textLabel?.text = userList?[indexPath.row].fullName
-//        result.detailTextLabel?.text = userList?[indexPath.row*2].email
+        result.email.text = userList[indexPath.row].userName
+       
+        let image = UIImage(named: (userList[indexPath.row].idData?.firstName?.lowercased())!)
+        
+        if let img = image  {
+           result.userPicture.image = img
+        } else {
+            result.userPicture.image = UIImage(named: "placeholder")
+        }
+       
         return result;
     }
     
@@ -101,7 +103,27 @@ class PermissionsViewController: UIViewController,UITableViewDelegate,UITableVie
         userSelectionDelegate?.selectedUser(userList[indexPath.row],spAppContext: self.spAppOptions)
     }
     
-  
+    func getAttributedText( appName:String ) ->  NSMutableAttributedString {
+        let info = "Select user for \n";
+    
+        let plainAttribute = [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 15)]
+    
+        let highlightAttribute = [NSForegroundColorAttributeName: UIColor.salesforceBlue(), NSFontAttributeName: UIFont.systemFont(ofSize: 18)]
+     
+        let partOne = NSMutableAttributedString(string: info, attributes: plainAttribute)
+        let partTwo = NSMutableAttributedString(string: appName, attributes: highlightAttribute)
+        
+        
+        
+//         let partThree = NSMutableAttributedString(string: " app.", attributes: plainAttribute)
+    
+        let combination = NSMutableAttributedString()
+    
+        combination.append(partOne)
+        combination.append(partTwo)
+        //combination.append(partThree)
+        return combination
+    }
 
     /*
     // MARK: - Navigation
@@ -112,5 +134,9 @@ class PermissionsViewController: UIViewController,UITableViewDelegate,UITableVie
         // Pass the selected object to the new view controller.
     }
     */
+    
+   
 
 }
+
+

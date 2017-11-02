@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PermissionsViewController" customModule="Authenticator" customModuleProvider="target">
             <connections>
+                <outlet property="infoTextView" destination="VjH-RU-sDh" id="m3v-OT-s4x"/>
                 <outlet property="tableView" destination="PXc-Fz-z6Q" id="SYG-Hs-cAN"/>
                 <outlet property="view" destination="iN0-l3-epB" id="iVM-em-txO"/>
             </connections>
@@ -22,14 +23,12 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="VjH-RU-sDh">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Select User for" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VjH-RU-sDh">
                     <rect key="frame" x="28" y="84" width="366" height="88"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="88" id="Afx-Nk-Ctx"/>
+                        <constraint firstAttribute="height" constant="88" id="9pq-JY-76G"/>
                     </constraints>
-                    <string key="text">Pick a user from the list of users to proceed with Authentication for requesting app. You can build a custom view that is used during the authentication flow.</string>
-                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
@@ -37,28 +36,30 @@
                     <rect key="frame" x="28" y="208" width="355" height="176"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="176" id="xuf-FW-itb"/>
+                        <constraint firstAttribute="height" constant="176" id="FmJ-TR-pD6"/>
                     </constraints>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bx8-0Z-fk4">
-                    <rect key="frame" x="28" y="441" width="150" height="30"/>
+                    <rect key="frame" x="51" y="441" width="150" height="30"/>
+                    <color key="backgroundColor" red="0.83496970095962442" green="0.81303555309034248" blue="0.81255148632915386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="3MV-Ra-d7l"/>
-                        <constraint firstAttribute="width" constant="150" id="tLA-v2-C3p"/>
+                        <constraint firstAttribute="width" constant="150" id="EtP-46-YRj"/>
+                        <constraint firstAttribute="height" constant="30" id="YhF-Ef-49M"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                     <state key="normal" title="Add User">
-                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="addUserAction:" destination="-1" eventType="touchUpInside" id="Sdj-7c-pi8"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRE-hz-bos">
-                    <rect key="frame" x="205" y="441" width="189" height="30"/>
+                    <rect key="frame" x="209" y="441" width="150" height="30"/>
+                    <color key="backgroundColor" red="0.83496970095962442" green="0.81303555309034248" blue="0.81255148632915386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                     <state key="normal" title="Cancel">
-                        <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="cancelAction:" destination="-1" eventType="touchUpInside" id="TLt-Hd-v7Y"/>
@@ -68,19 +69,21 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <accessibility key="accessibilityConfiguration" label="Pick User"/>
             <constraints>
-                <constraint firstItem="VjH-RU-sDh" firstAttribute="trailing" secondItem="BRE-hz-bos" secondAttribute="trailing" id="1Fo-6s-a2X"/>
-                <constraint firstItem="PXc-Fz-z6Q" firstAttribute="leading" secondItem="bx8-0Z-fk4" secondAttribute="leading" id="2GT-9V-FIH"/>
-                <constraint firstAttribute="trailing" secondItem="PXc-Fz-z6Q" secondAttribute="trailing" constant="31" id="2w9-Fu-ROY"/>
-                <constraint firstItem="VjH-RU-sDh" firstAttribute="leading" secondItem="PXc-Fz-z6Q" secondAttribute="leading" id="6x4-K0-lrU"/>
-                <constraint firstItem="BRE-hz-bos" firstAttribute="baseline" secondItem="bx8-0Z-fk4" secondAttribute="firstBaseline" id="8z6-Pd-aWo"/>
-                <constraint firstItem="BRE-hz-bos" firstAttribute="leading" secondItem="bx8-0Z-fk4" secondAttribute="trailing" constant="27" id="9Ub-Ya-X7Y"/>
-                <constraint firstItem="VjH-RU-sDh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="84" id="BHa-nD-7u2"/>
-                <constraint firstItem="VjH-RU-sDh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="28" id="Eo7-ij-vK7"/>
-                <constraint firstItem="bx8-0Z-fk4" firstAttribute="top" secondItem="PXc-Fz-z6Q" secondAttribute="bottom" constant="57" id="cjX-Kd-N36"/>
-                <constraint firstItem="bx8-0Z-fk4" firstAttribute="baseline" secondItem="BRE-hz-bos" secondAttribute="firstBaseline" id="enV-E6-Nxe"/>
-                <constraint firstItem="bx8-0Z-fk4" firstAttribute="top" secondItem="BRE-hz-bos" secondAttribute="top" id="fPH-wi-lkN"/>
-                <constraint firstItem="PXc-Fz-z6Q" firstAttribute="top" secondItem="VjH-RU-sDh" secondAttribute="bottom" constant="36" id="m1m-oZ-gaf"/>
-                <constraint firstItem="VjH-RU-sDh" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="n6m-ab-hOy"/>
+                <constraint firstItem="BRE-hz-bos" firstAttribute="baseline" secondItem="bx8-0Z-fk4" secondAttribute="firstBaseline" id="6Eh-rq-i2k"/>
+                <constraint firstAttribute="trailing" secondItem="PXc-Fz-z6Q" secondAttribute="trailing" constant="31" id="8fN-t2-9mG"/>
+                <constraint firstItem="bx8-0Z-fk4" firstAttribute="top" secondItem="BRE-hz-bos" secondAttribute="top" id="Gpd-q6-rKn"/>
+                <constraint firstItem="VjH-RU-sDh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="84" id="HOx-fE-9EY"/>
+                <constraint firstItem="VjH-RU-sDh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="28" id="IDd-ko-MmM"/>
+                <constraint firstItem="bx8-0Z-fk4" firstAttribute="baseline" secondItem="BRE-hz-bos" secondAttribute="firstBaseline" id="Puu-Do-pEq"/>
+                <constraint firstItem="BRE-hz-bos" firstAttribute="width" secondItem="bx8-0Z-fk4" secondAttribute="width" id="TAd-cv-93O"/>
+                <constraint firstItem="BRE-hz-bos" firstAttribute="leading" secondItem="bx8-0Z-fk4" secondAttribute="trailing" constant="8" symbolic="YES" id="VTL-4m-EG7"/>
+                <constraint firstAttribute="trailing" secondItem="BRE-hz-bos" secondAttribute="trailing" constant="55" id="cAA-aO-uou"/>
+                <constraint firstItem="VjH-RU-sDh" firstAttribute="leading" secondItem="PXc-Fz-z6Q" secondAttribute="leading" id="cbD-kK-kch"/>
+                <constraint firstItem="bx8-0Z-fk4" firstAttribute="top" secondItem="PXc-Fz-z6Q" secondAttribute="bottom" constant="57" id="eFl-oi-jb0"/>
+                <constraint firstItem="bx8-0Z-fk4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="51" id="n7e-an-0KS"/>
+                <constraint firstItem="VjH-RU-sDh" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="xcA-2p-A6F"/>
+                <constraint firstItem="PXc-Fz-z6Q" firstAttribute="top" secondItem="VjH-RU-sDh" secondAttribute="bottom" constant="36" id="xt6-Ow-33A"/>
+                <constraint firstItem="BRE-hz-bos" firstAttribute="height" secondItem="bx8-0Z-fk4" secondAttribute="height" id="yFd-yK-6Kl"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
             <point key="canvasLocation" x="34.5" y="87.5"/>

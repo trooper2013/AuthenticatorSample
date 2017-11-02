@@ -12,15 +12,15 @@ protocol ActionsPopoverTableViewDelegate {
     
     func switchUserSelected(sender: ActionsPopoverTableViewController)
     
-    func logoutUserSelected(sender: ActionsPopoverTableViewController)
+    func logoutAllUsersSelected(sender: ActionsPopoverTableViewController)
     
 }
 
 class ActionsPopoverTableViewController: UITableViewController {
     
     let cellIdentifier = "ACELL"
-    let actions = ["Switch User","Bring up user switching screen",
-                   "Logout","Logout Current User", "Logout All Users","Logout All Users"]
+    let actions = ["Add New User","Login",
+                   "Logout All Users","Logout All Users"]
     
     
     var delegate: ActionsPopoverTableViewDelegate?
@@ -51,13 +51,8 @@ class ActionsPopoverTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-
-        
         let result = cell ?? UITableViewCell(style: .subtitle, reuseIdentifier: cellIdentifier)
-        
         result.textLabel?.text = actions[indexPath.row*2]
-        result.detailTextLabel?.text = actions[indexPath.row*2+1]
-        
         return result;
     }
  
@@ -67,10 +62,7 @@ class ActionsPopoverTableViewController: UITableViewController {
             self.delegate?.switchUserSelected(sender: self)
             break
         case 1:
-            self.delegate?.logoutUserSelected(sender: self)
-            break
-        case 2:
-            self.delegate?.logoutUserSelected(sender: self)
+            self.delegate?.logoutAllUsersSelected(sender: self)
             break
         default:
             print("Selected table");

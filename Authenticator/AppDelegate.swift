@@ -114,7 +114,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate
         // loginViewController.navBarTextColor = UIColor.black;
         //
         SalesforceSDKManager.shared().launch()
-        SFAuthenticationManager.shared()
+       // SFAuthenticationManager.shared()
         return true
     }
     
@@ -138,14 +138,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        // If you're using advanced authentication:
-        // --Configure your app to handle incoming requests to your
-        //   OAuth Redirect URI custom URL scheme.
-        // --Uncomment the following line and delete the original return statement:
-        
-        // return  SFAuthenticationManager.shared().handleAdvancedAuthenticationResponse(url)
-        return SFUserAccountManager.sharedInstance().handleAdvancedAuthenticationResponse(url, options: options)
+       return SFUserAccountManager.sharedInstance().handleAdvancedAuthenticationResponse(url, options: options)
     }
     
     // MARK: - Private methods
@@ -164,11 +157,8 @@ class AppDelegate : UIResponder, UIApplicationDelegate
     
     func setupRootViewController()
     {
-//        let rootVC = RootViewController(nibName: nil, bundle: nil)
-//        let navVC = UINavigationController(rootViewController: rootVC)
-//        self.window!.rootViewController = navVC
         var mainView: UIStoryboard!
-        mainView = UIStoryboard(name: "Main", bundle: nil)
+        mainView = UIStoryboard(name: "AuthenticatorMain", bundle: nil)
         
         self.window!.rootViewController = mainView.instantiateInitialViewController()
 
@@ -205,20 +195,11 @@ class AppDelegate : UIResponder, UIApplicationDelegate
             let allAccounts = SFUserAccountManager.sharedInstance().allUserAccounts()
             numberOfAccounts = (allAccounts!.count);
             
-            if numberOfAccounts > 1 {
-                let userSwitchVc = SFDefaultUserManagementViewController(completionBlock: {
-                    action in
-                    self.window!.rootViewController!.dismiss(animated:true, completion: nil)
-                })
-                if let actualRootViewController = self.window!.rootViewController {
-                    actualRootViewController.present(userSwitchVc, animated: true, completion: nil)
-                }
-            } else {
-                if (numberOfAccounts == 1) {
+            if numberOfAccounts >= 1 {
                     SFUserAccountManager.sharedInstance().currentUser = allAccounts![0]
-                }
-                SalesforceSDKManager.shared().launch()
             }
+            SalesforceSDKManager.shared().launch()
+            
         }
     }
     

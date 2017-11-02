@@ -14,6 +14,11 @@ class AppsViewController: UIViewController {
 
     @IBOutlet weak var appTwoButton: UIButton!
     
+    @IBAction func toolBarAction(_ sender: Any) {
+       let controller =  self.navigationController as! MainViewController
+       controller.popOverAction(sender as! UIBarButtonItem)
+    }
+    
     @IBOutlet weak var messageLabel: UILabel!
     @IBAction func appOneButtonAction(_ sender: Any) {
         launchSPApp(appUrl: readAppOneUrl())
@@ -21,6 +26,10 @@ class AppsViewController: UIViewController {
     
     @IBAction func appTwoButtonAction(_ sender: Any) {
         launchSPApp(appUrl: readAppTwoUrl())
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
     
     override func viewDidLoad() {
@@ -38,7 +47,7 @@ class AppsViewController: UIViewController {
     func launchSPApp(appUrl :String) {
         let userAccount = SFUserAccountManager.sharedInstance().currentUser
         let userHint =  (userAccount?.accountIdentity.userId)! + ":" + (userAccount?.accountIdentity.orgId)!
-        let urlString = appUrl + "://oauth2/v1.0/idpinit?user_hint=" + userHint
+        let urlString = appUrl + "://oauth2/v1.0/idpinit?user_hint=" + userHint + "&login_host=" + (userAccount?.credentials.domain)!
         let url = URL(string: urlString)
         SFApplicationHelper.open(url!)
     }
