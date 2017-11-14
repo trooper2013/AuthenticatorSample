@@ -30,6 +30,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>sampleidpapp</string>
+				<string>authenticator</string>
 			</array>
 		</dict>
 	</array>

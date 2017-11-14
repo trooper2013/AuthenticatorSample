@@ -27,10 +27,9 @@ import UIKit
 import SalesforceSDKCore
 
 // Fill these in when creating a new Connected Application on Force.com
-let RemoteAccessConsumerKey = "3MVG9uudbyLbNPZOCK.nhD0oGKoVqylcOOy8lN2zC4rkWt3gA.SZS6fxxhXGeDpgsny8cgezzF.aTP_MKxciA"
-//"3MVG9i1HRpGLXp.pwGEoSSPi5OfiJSjKpaVuXk9vw.e8yfVB.C5Uy9GfWiPFMD3NfdJLN8nG5oMIzT6heoUK."
-//"3MVG9uudbyLbNPZOCK.nhD0oGKtGeEnACkjLeOPDuaI79ZJnnhJFD7Z_C33n6aYHbaUpIHABTjIxIiqzGbinL"
-let OAuthRedirectURI        = "sampleidpapp://oauth2/callback"
+let RemoteAccessConsumerKey = "3MVG9g9rbsTkKnAVZKH353rwNPSNxK7EC.JENfWndAnLC5s1S8YK4W68IJ0.RHCbvfJ9N5hAPgZIKoYhRKH91";
+
+let OAuthRedirectURI        = "authenticator:///mobilesdk/detect/oauth/done"
 
 class AppDelegate : UIResponder, UIApplicationDelegate
 {
@@ -41,9 +40,9 @@ class AppDelegate : UIResponder, UIApplicationDelegate
     {
         super.init()
         
-        SalesforceSDKManager.shared().connectedAppId = RemoteAccessConsumerKey
-        SalesforceSDKManager.shared().connectedAppCallbackUri = OAuthRedirectURI
-        SalesforceSDKManager.shared().authScopes = ["web", "api"]
+        SalesforceSDKManager.shared().appConfig?.remoteAccessConsumerKey = RemoteAccessConsumerKey
+        SalesforceSDKManager.shared().appConfig?.oauthRedirectURI = OAuthRedirectURI
+        SalesforceSDKManager.shared().appConfig?.oauthScopes = ["web", "api"]
        
         SalesforceSDKManager.shared().idpUserSelectionBlock = {
            let controller = PermissionsNavViewController()
@@ -51,19 +50,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate
         }
         SalesforceSDKManager.shared().isIdentityProvider = true
         SalesforceSDKManager.shared()
-        //SFUserAccountManager.sharedInstance().loginHost = "kksdo.my.salesforce.com"
-
-
-    
-        //Uncomment the following line inorder to enable/force the use of advanced authentication flow.
-        // SFAuthenticationManager.shared().advancedAuthConfiguration = SFOAuthAdvancedAuthConfiguration.require;
-        // OR
-        // To  retrieve advanced auth configuration from the org, to determine whether to initiate advanced authentication.
-        // SFAuthenticationManager.shared().advancedAuthConfiguration = SFOAuthAdvancedAuthConfiguration.allow;
-        
-        // NOTE: If advanced authentication is configured or forced,  it will launch Safari to handle authentication
-        // instead of a webview. You must implement application:openURL:options  to handle the callback.
-        
+     
         SalesforceSDKManager.shared().postLaunchAction = {
             [unowned self] (launchActionList: SFSDKLaunchAction) in
             let launchActionString = SalesforceSDKManager.launchActionsStringRepresentation(launchActionList)

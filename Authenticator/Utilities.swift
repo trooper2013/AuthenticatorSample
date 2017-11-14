@@ -1,11 +1,26 @@
-//
-//  Utilities.swift
-//  Authenticator
-//
-//  Created by Raj Rao on 9/11/17.
-//  Copyright © 2017 Salesforce. All rights reserved.
-//
-
+/*
+ Copyright (c) 2017-present, salesforce.com, inc. All rights reserved.
+ 
+ Redistribution and use of this software in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+ * Redistributions of source code must retain the above copyright notice, this list of conditions
+ and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice, this list of
+ conditions and the following disclaimer in the documentation and/or other materials provided
+ with the distribution.
+ * Neither the name of salesforce.com, inc. nor the names of its contributors may be used to
+ endorse or promote products derived from this software without specific prior written
+ permission of salesforce.com, inc.
+ 
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+ FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+ WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 import Foundation
 import UIKit
 import SalesforceSDKCore
@@ -13,9 +28,9 @@ let app_one_key = "app-one"
 
 let app_two_key = "app-two"
 
-let app_one_default_url = "sampleapp"
+let app_one_default_url = "smartsyncexplorer"
 
-let app_two_default_url = "sampleapptwo"
+let app_two_default_url = "accounteditor"
 
 func readAppOneUrl() -> String {
     let url:String? =  readStringFromDefaults(key: app_one_key)
@@ -69,61 +84,5 @@ public extension Sequence {
     }
 }
 
-
-extension UIImageView : SFRestDelegate {
-    
-//    - (void)request:(SFRestRequest *)request didLoadResponse:(id)dataResponse rawResponse:(NSURLResponse *)rawResponse;
-    
-    public func request(_ request: SFRestRequest, didLoadResponse dataResponse: Any) {
-        let responseData = dataResponse as! Data
-        DispatchQueue.main.async(execute: { () -> Void in
-            let image = UIImage(data: responseData)
-            guard let img = image else {
-                return
-            }
-            self.image = img
-            
-        })
-        
-    }
-    
-    public func request(_ request: SFRestRequest, didFailLoadWithError error: Error) {
-        print("Error...")
-    }
-    
-    public func imageFromURL(imageURL: URL, placeholder: UIImage) {
-        
-        if self.image == nil{
-            self.image = placeholder
-        }
-        
-        let request = SFRestRequest(method: SFRestMethod.GET, baseURL: "https://fblogin-dev-ed--c.na30.content.force.com", path: "profilephoto/72936000000p2Om/F", queryParams: nil )
-        SFRestAPI.sharedInstance().send(request, delegate: self)
-        
-//        let token = SFUserAccountManager.sharedInstance().currentUser?.credentials.accessToken
-//        request.setValue("Bearer " + token!, forHTTPHeaderField: "Authorization")
-        
-        
-//        URLSession.shared.dataTask(with: imageURL, completionHandler: { (data, response, error) -> Void in
-//
-//            if error != nil {
-//                print(error ?? "No Error")
-//                return
-//            }
-//
-//            DispatchQueue.main.async(execute: { () -> Void in
-//                let image = UIImage(data: data!)
-//                guard let name = nameField.text else {
-//                    show("No name to submit")
-//                    return
-//                }
-//
-//                if (image!=nil) {
-//                    self.image = image
-//                }
-//            })
-//
-//        }).resume()
-    }}
 
 

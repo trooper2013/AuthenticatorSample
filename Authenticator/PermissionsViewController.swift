@@ -1,10 +1,26 @@
-//
-//  PermissionsViewController.swift
-//  Authenticator
-//
-//  Created by Raj Rao on 9/14/17.
-//  Copyright © 2017 Salesforce. All rights reserved.
-//
+/*
+ Copyright (c) 2017-present, salesforce.com, inc. All rights reserved.
+ 
+ Redistribution and use of this software in source and binary forms, with or without modification,
+ are permitted provided that the following conditions are met:
+ * Redistributions of source code must retain the above copyright notice, this list of conditions
+ and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright notice, this list of
+ conditions and the following disclaimer in the documentation and/or other materials provided
+ with the distribution.
+ * Neither the name of salesforce.com, inc. nor the names of its contributors may be used to
+ endorse or promote products derived from this software without specific prior written
+ permission of salesforce.com, inc.
+ 
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
+ IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+ FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+ CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+ WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 
 import UIKit
 import SalesforceSDKCore
@@ -27,6 +43,7 @@ class PermissionsViewController: UIViewController,UITableViewDelegate,UITableVie
     @IBAction func cancelAction(_ sender: Any) {
         userSelectionDelegate?.cancel(self.spAppOptions)
     }
+    var gradientLayer: CAGradientLayer!
 
     
     override func viewDidLoad() {
@@ -60,7 +77,31 @@ class PermissionsViewController: UIViewController,UITableViewDelegate,UITableVie
         self.view.addSubview(self.tableView)
         // Do any additional setup after loading the view.
     }
-
+    
+    /*
+    override func viewWillAppear(_ animated: Bool) {
+        //super.viewWillAppear(animated)
+        //createGradientLayer();
+        
+        let topColor = UIColor(red: 69/255, green: 140/255, blue: 68/255, alpha: 1).cgColor
+        let bottomColor = UIColor(red: 143/255, green: 239/255, blue: 141/255, alpha: 1).cgColor
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.frame
+        gradientLayer.colors = [topColor,bottomColor]
+        gradientLayer.locations = [0.1,1.0]
+        self.view.layer.insertSublayer(gradientLayer, at: 0)
+    }*/
+    
+   /*
+    func createGradientLayer() {
+        gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.view.bounds
+        gradientLayer.colors = [UIColor.red.cgColor, UIColor.yellow.cgColor]
+        gradientLayer.insertSublayer(<#T##layer: CALayer##CALayer#>, at: 0)
+        
+        self.view.layer.addSublayer(gradientLayer)
+    }
+ */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
@@ -108,7 +149,7 @@ class PermissionsViewController: UIViewController,UITableViewDelegate,UITableVie
     
         let plainAttribute = [NSForegroundColorAttributeName: UIColor.black, NSFontAttributeName: UIFont.systemFont(ofSize: 15)]
     
-        let highlightAttribute = [NSForegroundColorAttributeName: UIColor.salesforceBlue(), NSFontAttributeName: UIFont.systemFont(ofSize: 18)]
+        let highlightAttribute = [NSForegroundColorAttributeName: UIColor.salesforceBlue(), NSFontAttributeName: UIFont.systemFont(ofSize: 24)]
      
         let partOne = NSMutableAttributedString(string: info, attributes: plainAttribute)
         let partTwo = NSMutableAttributedString(string: appName, attributes: highlightAttribute)
