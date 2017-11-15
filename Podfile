@@ -14,7 +14,6 @@ pod 'SalesforceAnalytics', :path => 'mobile_sdk/SalesforceMobileSDK-iOS'
 pod 'SalesforceSDKCore', :path => 'mobile_sdk/SalesforceMobileSDK-iOS'
 pod 'SmartStore', :path => 'mobile_sdk/SalesforceMobileSDK-iOS'
 pod 'SmartSync', :path => 'mobile_sdk/SalesforceMobileSDK-iOS'
-pod 'SwipeCellKit'
-pod 'Kingfisher', '~> 4.0'
+pod 'SwipeCellKit', :git => 'https://github.com/SwipeCellKit/SwipeCellKit.git', :branch => 'develop'
 pod 'WYPopoverController'
 end

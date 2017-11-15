@@ -24,7 +24,7 @@
 import UIKit
 import SalesforceSDKCore
 import SwipeCellKit
-import Kingfisher
+
 protocol UserTableViewCellDelegate {
     func logoutUser(user: SFUserAccount)
 }
