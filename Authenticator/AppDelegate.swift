@@ -145,7 +145,7 @@ class AppDelegate : UIResponder, UIApplicationDelegate
     func setupRootViewController()
     {
         var mainView: UIStoryboard!
-        mainView = UIStoryboard(name: "AuthenticatorMain", bundle: nil)
+        mainView = UIStoryboard(name: "AppsMain", bundle: nil)
         
         self.window!.rootViewController = mainView.instantiateInitialViewController()
 

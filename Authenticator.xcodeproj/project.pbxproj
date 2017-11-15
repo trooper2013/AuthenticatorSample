@@ -27,7 +27,7 @@
 		B79B0D1A1F6B51F6005F56CC /* PermissionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B0D191F6B51F6005F56CC /* PermissionsViewController.swift */; };
 		B79B0D431F6B5CEF005F56CC /* PermissionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B79B0D421F6B5CEF005F56CC /* PermissionsViewController.xib */; };
 		B79B0D451F6B68F1005F56CC /* PermissionsNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79B0D441F6B68F1005F56CC /* PermissionsNavViewController.swift */; };
-		B7DCCA1D1FA1A591003C7812 /* AuthenticatorMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7DCCA1C1FA1A591003C7812 /* AuthenticatorMain.storyboard */; };
+		B7DCCA1D1FA1A591003C7812 /* AppsMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7DCCA1C1FA1A591003C7812 /* AppsMain.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,7 +57,7 @@
 		B79B0D191F6B51F6005F56CC /* PermissionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionsViewController.swift; sourceTree = "<group>"; };
 		B79B0D421F6B5CEF005F56CC /* PermissionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PermissionsViewController.xib; sourceTree = "<group>"; };
 		B79B0D441F6B68F1005F56CC /* PermissionsNavViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionsNavViewController.swift; sourceTree = "<group>"; };
-		B7DCCA1C1FA1A591003C7812 /* AuthenticatorMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthenticatorMain.storyboard; sourceTree = "<group>"; };
+		B7DCCA1C1FA1A591003C7812 /* AppsMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppsMain.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +131,7 @@
 				B79B0D191F6B51F6005F56CC /* PermissionsViewController.swift */,
 				B79B0D421F6B5CEF005F56CC /* PermissionsViewController.xib */,
 				B79B0D441F6B68F1005F56CC /* PermissionsNavViewController.swift */,
-				B7DCCA1C1FA1A591003C7812 /* AuthenticatorMain.storyboard */,
+				B7DCCA1C1FA1A591003C7812 /* AppsMain.storyboard */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -225,7 +225,7 @@
 				B7090D901FA97F98003086EA /* Launch Screen.storyboard in Resources */,
 				B79B0CBE1F670DCB005F56CC /* SalesforceAppLogo.jpg in Resources */,
 				B73ECEB51F908AD60065F006 /* Images.xcassets in Resources */,
-				B7DCCA1D1FA1A591003C7812 /* AuthenticatorMain.storyboard in Resources */,
+				B7DCCA1D1FA1A591003C7812 /* AppsMain.storyboard in Resources */,
 				B79B0CC61F671151005F56CC /* UserTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,7 +24,6 @@
 
 import UIKit
 import SalesforceSDKCore
-import Kingfisher
 class PermissionsViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,SFSDKUserSelectionView{
  
     @IBOutlet weak var tableView: UITableView!
